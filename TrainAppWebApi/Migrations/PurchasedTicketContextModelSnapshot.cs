@@ -95,7 +95,7 @@ namespace TrainAppWebApi.Migrations
             modelBuilder.Entity("TrainAppWebApi.Models.UserLogin", b =>
                 {
                     b.Property<string>("Username")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Password")
                         .IsRequired()

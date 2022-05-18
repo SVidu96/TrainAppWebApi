@@ -43,12 +43,16 @@ namespace TrainAppWebApi.Controllers
         [HttpPost("login")]
         public IActionResult Login([FromBody] UserLogin userLogin)
         {
-            var user = Authenticate(userLogin);
+            var userData = Authenticate(userLogin);
 
-            if(user != null)
+            if(userData != null)
             {
-                var token = Generate(user);
-                return Ok(token);
+                var tokenData = Generate(userData);
+                return Ok(new UserTokenViewModel()
+                {
+                    user = userData,
+                    token = tokenData
+                });
             }
 
             return NotFound("User not found");

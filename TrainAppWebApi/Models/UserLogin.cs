@@ -9,6 +9,7 @@ namespace TrainAppWebApi.Models
     public class UserLogin
     {
         [Key]
+        [MaxLength(100)]
         public string Username { get; set; }
 
         [Required]
