@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -14,12 +15,18 @@ namespace TrainAppWebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PurchasedTicketsController : ControllerBase
+    public class PurchasedTicketsController : BaseApiController
     {
         private IPurchaseTicketService _purchaseTicketService;
+        private readonly IWebHostEnvironment _env;
 
-        public PurchasedTicketsController(IPurchaseTicketService purchaseTicketService)
+        public PurchasedTicketsController(
+                IPurchaseTicketService purchaseTicketService,
+                IWebHostEnvironment environment
+                                          ) 
+                : base(environment)
         {
+            _env = environment;
             _purchaseTicketService = purchaseTicketService;
         }
         //private readonly MockPurchasedTicketRepo _repository = new MockPurchasedTicketRepo();
@@ -30,8 +37,12 @@ namespace TrainAppWebApi.Controllers
         [Authorize] 
         public ActionResult<IEnumerable<PurchasedTicket>> GetAllPurchasedTickets()
         {
-            var purchasedTickets = _purchaseTicketService.GetPurchasedTickets();
-            return Ok(purchasedTickets);
+            var user = UserRef;
+            if (user.UserId != null) {
+                var purchasedTickets = _purchaseTicketService.GetPurchasedTicketsByUserId(user.UserId);
+                return Ok(purchasedTickets);
+            }
+            return BadRequest("User is null");
         }
 
 
