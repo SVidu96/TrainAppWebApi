@@ -62,8 +62,10 @@ namespace TrainAppWebApi.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult<PurchasedTicket> AddPurchasedTicket(PurchasedTicketViewModel purchasedTicketViewModel)
         {
+            purchasedTicketViewModel.UserId = UserRef.UserId;
             var purchasedTicket = PurchasedTicketViewModel.ToDataModel(purchasedTicketViewModel);
             purchasedTicket = _purchaseTicketService.AddPurchasedTicket(purchasedTicket);
             return Ok(purchasedTicket);
