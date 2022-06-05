@@ -82,7 +82,7 @@ namespace TrainAppWebApi.Controllers
             }
 
             if (result)
-                return Ok("Success");
+                return Ok(StatusCodes.Status200OK);
             else
                 return StatusCode(StatusCodes.Status500InternalServerError,"Failed");
         }
