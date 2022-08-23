@@ -53,6 +53,66 @@ namespace TrainAppWebApi.Migrations
                     b.ToTable("PurchasedTickets");
                 });
 
+            modelBuilder.Entity("TrainAppWebApi.Models.Train", b =>
+                {
+                    b.Property<Guid>("TrainId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("EndTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("StartTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("TrainCategory")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainStops")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TrainId");
+
+                    b.ToTable("Trains");
+                });
+
+            modelBuilder.Entity("TrainAppWebApi.Models.TrainUpdate", b =>
+                {
+                    b.Property<Guid>("TrainId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("EstimatedTime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("LastLatitude")
+                        .HasColumnType("real");
+
+                    b.Property<float>("LastLongitude")
+                        .HasColumnType("real");
+
+                    b.Property<string>("LastStation")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("TrainId");
+
+                    b.ToTable("TrainUpdates");
+                });
+
             modelBuilder.Entity("TrainAppWebApi.Models.User", b =>
                 {
                     b.Property<Guid>("UserId")

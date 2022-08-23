@@ -45,5 +45,10 @@ namespace TrainAppWebApi.Services
             }
 
         }
+
+        public IEnumerable<PurchasedTicket> GetPurchasedTicketsByTicketId(Guid ticketId)
+        {
+            return _trainAppRepo.GetAll<PurchasedTicket>().Where(s => s.PurchasedTicketId == ticketId).OrderByDescending(p => p.PurchasedDate).ToList();
+        }
     }
 }

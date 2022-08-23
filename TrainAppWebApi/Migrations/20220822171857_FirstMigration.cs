@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrainAppWebApi.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -23,6 +23,40 @@ namespace TrainAppWebApi.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PurchasedTickets", x => x.PurchasedTicketId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Trains",
+                columns: table => new
+                {
+                    TrainId = table.Column<Guid>(nullable: false),
+                    TrainNumber = table.Column<string>(nullable: false),
+                    TrainName = table.Column<string>(nullable: true),
+                    TrainCategory = table.Column<string>(nullable: true),
+                    StartTime = table.Column<DateTime>(nullable: false),
+                    EndTime = table.Column<DateTime>(nullable: false),
+                    TrainStops = table.Column<string>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Trains", x => x.TrainId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TrainUpdates",
+                columns: table => new
+                {
+                    TrainId = table.Column<Guid>(nullable: false),
+                    LastStation = table.Column<string>(nullable: true),
+                    LastTime = table.Column<DateTime>(nullable: false),
+                    LastLatitude = table.Column<float>(nullable: false),
+                    LastLongitude = table.Column<float>(nullable: false),
+                    EstimatedTime = table.Column<string>(nullable: true),
+                    Notes = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TrainUpdates", x => x.TrainId);
                 });
 
             migrationBuilder.CreateTable(
@@ -61,6 +95,12 @@ namespace TrainAppWebApi.Migrations
         {
             migrationBuilder.DropTable(
                 name: "PurchasedTickets");
+
+            migrationBuilder.DropTable(
+                name: "Trains");
+
+            migrationBuilder.DropTable(
+                name: "TrainUpdates");
 
             migrationBuilder.DropTable(
                 name: "UserLogins");

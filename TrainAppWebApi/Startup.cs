@@ -71,6 +71,7 @@ namespace TrainAppWebApi
             //services
             services.AddTransient<IPurchaseTicketService, PurchaseTicketService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ITrainUpdateService, TrainUpdateService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

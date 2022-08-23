@@ -47,13 +47,13 @@ namespace TrainAppWebApi.Controllers
 
 
         // api/purchasedtickets/1
-        [HttpGet("{userid}")]
-        public ActionResult<IEnumerable<PurchasedTicket>> GetPurchasedTicketsByUserId(string userid)
+        [HttpGet("{ticketId}")]
+        public ActionResult<IEnumerable<PurchasedTicket>> GetPurchasedTicketById(string ticketId)
         {  
-            if (Guid.TryParse(userid, out var guidId))
+            if (Guid.TryParse(ticketId, out var guidId))
             {
-                var guidUserId = Guid.Parse(userid);
-                var purchasedTickets = _purchaseTicketService.GetPurchasedTicketsByUserId(guidUserId);
+                var guidTicketId = Guid.Parse(ticketId);
+                var purchasedTickets = _purchaseTicketService.GetPurchasedTicketsByTicketId(guidTicketId);
                 return Ok(purchasedTickets);
             }
             else {

@@ -17,6 +17,8 @@ namespace TrainAppWebApi.Data
         public DbSet<PurchasedTicket> PurchasedTickets { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserLogin> UserLogins { get; set; }
+        public DbSet<Train> Trains { get; set; }
+        public DbSet<TrainUpdate> TrainUpdates { get; set; }
 
 
 

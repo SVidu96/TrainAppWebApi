@@ -10,6 +10,7 @@ namespace TrainAppWebApi.Services.Interfaces
     {
         IEnumerable<PurchasedTicket> GetPurchasedTickets();
         IEnumerable<PurchasedTicket> GetPurchasedTicketsByUserId(Guid userId);
+        IEnumerable<PurchasedTicket> GetPurchasedTicketsByTicketId(Guid ticketId);
         PurchasedTicket AddPurchasedTicket(PurchasedTicket purchasedTicket);
         bool DeletePurchasedTicket(Guid ticketId);
     }
