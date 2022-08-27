@@ -61,6 +61,17 @@ namespace TrainAppWebApi.Controllers
             } 
         }
 
+        [HttpGet("rfid/{rfid}")]
+        public ActionResult<IEnumerable<PurchasedTicket>> GetPurchasedTicketsByRFID(string rfid)
+        {
+            if(rfid == null || rfid == "null") {
+                return Ok(null);
+            }
+            var purchasedTickets = _purchaseTicketService.GetPurchasedTicketsByRFID(rfid);
+            return Ok(purchasedTickets);
+            
+        }
+
         [HttpPost]
         [Authorize]
         public ActionResult<PurchasedTicket> AddPurchasedTicket(PurchasedTicketViewModel purchasedTicketViewModel)

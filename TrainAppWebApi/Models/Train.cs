@@ -27,5 +27,11 @@ namespace TrainAppWebApi.Models
         [Required]
         public string TrainStops { get; set; }
 
+        [Required]
+        public string StartStation { get; set; }
+
+        [Required]
+        public string EndStation { get; set; }
+
     }
 }

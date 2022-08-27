@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainAppWebApi.Data;
 
 namespace TrainAppWebApi.Migrations
 {
     [DbContext(typeof(PurchasedTicketContext))]
-    partial class PurchasedTicketContextModelSnapshot : ModelSnapshot
+    [Migration("20220823173051_trainClass")]
+    partial class trainClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -178,20 +180,6 @@ namespace TrainAppWebApi.Migrations
                     b.HasKey("UserId");
 
                     b.ToTable("UserLogins");
-                });
-
-            modelBuilder.Entity("TrainAppWebApi.Models.UserRFID", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("RfidNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("UserId");
-
-                    b.ToTable("UserRFID");
                 });
 #pragma warning restore 612, 618
         }

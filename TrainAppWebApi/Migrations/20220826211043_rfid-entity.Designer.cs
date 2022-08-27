@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrainAppWebApi.Data;
 
 namespace TrainAppWebApi.Migrations
 {
     [DbContext(typeof(PurchasedTicketContext))]
-    partial class PurchasedTicketContextModelSnapshot : ModelSnapshot
+    [Migration("20220826211043_rfid-entity")]
+    partial class rfidentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

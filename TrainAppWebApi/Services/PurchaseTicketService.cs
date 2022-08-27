@@ -20,7 +20,12 @@ namespace TrainAppWebApi.Services
         {
             return _trainAppRepo.GetAll<PurchasedTicket>().Where(s => s.UserId == userId).OrderByDescending(p => p.PurchasedDate).ToList();
         }
-
+        public IEnumerable<PurchasedTicket> GetPurchasedTicketsByRFID(string rfid)
+        {
+            var userRfid = new UserRFID();
+            userRfid = _trainAppRepo.GetAll<UserRFID>().Where(x => x.RfidNumber == rfid).FirstOrDefault();
+            return _trainAppRepo.GetAll<PurchasedTicket>().Where(s => s.UserId == userRfid.UserId).OrderByDescending(p => p.PurchasedDate).ToList();
+        }
         public IEnumerable<PurchasedTicket> GetPurchasedTickets()
         {
             return _trainAppRepo.GetAll<PurchasedTicket>().ToList();

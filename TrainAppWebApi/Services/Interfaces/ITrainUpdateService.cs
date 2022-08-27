@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TrainAppWebApi.Models;
+using TrainAppWebApi.Models.ViewModels;
 
 namespace TrainAppWebApi.Services.Interfaces
 {
@@ -10,7 +11,7 @@ namespace TrainAppWebApi.Services.Interfaces
     {
         IEnumerable<TrainUpdate> GetTrainUpdates();
         IEnumerable<TrainUpdate> GetTrainUpdateById(Guid trainId);
-        TrainUpdate AddTrainUpdate(TrainUpdate trainUpdate);
+        TrainUpdate AddTrainUpdate(TrainUpdateViewModel trainUpdate);
         
         //Add a function to reset the update at the end of the day
     }

@@ -19,6 +19,7 @@ namespace TrainAppWebApi.Data
         public DbSet<UserLogin> UserLogins { get; set; }
         public DbSet<Train> Trains { get; set; }
         public DbSet<TrainUpdate> TrainUpdates { get; set; }
+        public DbSet<UserRFID> UserRFID { get; set; }
 
 
 
